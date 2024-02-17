@@ -3737,7 +3737,7 @@
 99/home/anoth/Documents/repos/mmgd24_task1/node_modules/@babel/types/lib/validators/matchesPattern.js1707675316232043247 0
 130/home/anoth/Documents/repos/mmgd24_task1/node_modules/css-select/node_modules/entities/lib/esm/generated/decode-data-html.d.ts.map1707675316056041311 0
 102/home/anoth/Documents/repos/mmgd24_task1/node_modules/@babel/types/lib/validators/isValidIdentifier.js1707675316228043204 0
-63/home/anoth/Documents/repos/mmgd24_task1/dist/index.975ef6c8.js1707677906591171144 0
+63/home/anoth/Documents/repos/mmgd24_task1/dist/index.975ef6c8.js1707760283340124530 0
 94/home/anoth/Documents/repos/mmgd24_task1/node_modules/@babel/types/lib/validators/isBinding.js1707675316220043116 0
 69/home/anoth/Documents/repos/mmgd24_task1/node_modules/resolve/.github1707675316176042632 1
 102/home/anoth/Documents/repos/mmgd24_task1/node_modules/@babel/types/lib/validators/isBlockScoped.js.map1707675316220043116 0
@@ -4441,7 +4441,7 @@
 89/home/anoth/Documents/repos/mmgd24_task1/node_modules/utility-types/dist/utility-types.js1707675315864039197 0
 88/home/anoth/Documents/repos/mmgd24_task1/node_modules/expect/build/asymmetricMatchers.js1707675315764038098 0
 100/home/anoth/Documents/repos/mmgd24_task1/node_modules/@babel/generator/lib/generators/expressions.js1707675315976040430 0
-56/home/anoth/Documents/repos/mmgd24_task1/dist/index.html1707677663244290891 0
+56/home/anoth/Documents/repos/mmgd24_task1/dist/index.html1707759880121257297 0
 81/home/anoth/Documents/repos/mmgd24_task1/node_modules/core-js/actual/url/index.js1707675316360044656 0
 83/home/anoth/Documents/repos/mmgd24_task1/node_modules/weak-lru-cache/LRFUExpirer.js1707675315844038977 0
 109/home/anoth/Documents/repos/mmgd24_task1/node_modules/@parcel/reporter-cli/node_modules/color-convert/LICENSE1707675315888039462 0
@@ -6162,7 +6162,7 @@
 107/home/anoth/Documents/repos/mmgd24_task1/node_modules/caniuse-lite/data/features/font-variant-alternates.js1707675316244043379 0
 87/home/anoth/Documents/repos/mmgd24_task1/node_modules/core-js/features/json/raw-json.js1707675316412045229 0
 104/home/anoth/Documents/repos/mmgd24_task1/node_modules/jest-runner/node_modules/supports-color/browser.js1707675315768038141 0
-45/home/anoth/Documents/repos/mmgd24_task1/dist1707677906591171144 1
+45/home/anoth/Documents/repos/mmgd24_task1/dist1707760283340124530 1
 85/home/anoth/Documents/repos/mmgd24_task1/node_modules/@babel/traverse/lib/visitors.js1707675316128042103 0
 86/home/anoth/Documents/repos/mmgd24_task1/node_modules/source-map-js/lib/source-node.js1707675315988040562 0
 111/home/anoth/Documents/repos/mmgd24_task1/node_modules/@babel/helper-member-expression-to-functions/lib/index.js1707675315816038670 0
@@ -6756,7 +6756,7 @@
 90/home/anoth/Documents/repos/mmgd24_task1/node_modules/core-js/modules/web.set-immediate.js1707675316476045932 0
 82/home/anoth/Documents/repos/mmgd24_task1/node_modules/core-js/actual/string/sup.js1707675316444045581 0
 102/home/anoth/Documents/repos/mmgd24_task1/node_modules/caniuse-lite/data/features/link-rel-prerender.js1707675316268043644 0
-62/home/anoth/Documents/repos/mmgd24_task1/src/rectangle.test.js1707667936214137500 0
+62/home/anoth/Documents/repos/mmgd24_task1/src/rectangle.test.js1707678037120713337 0
 85/home/anoth/Documents/repos/mmgd24_task1/node_modules/caniuse-lite/data/regions/CG.js1707675316140042235 0
 90/home/anoth/Documents/repos/mmgd24_task1/node_modules/core-js/actual/instance/to-sorted.js1707675316452045669 0
 88/home/anoth/Documents/repos/mmgd24_task1/node_modules/@parcel/codeframe/src/codeframe.js1707675316120042014 0
@@ -7497,7 +7497,7 @@
 89/home/anoth/Documents/repos/mmgd24_task1/node_modules/caniuse-lite/data/features/asmjs.js1707675316072041487 0
 103/home/anoth/Documents/repos/mmgd24_task1/node_modules/cosmiconfig/node_modules/argparse/lib/textwrap.js1707675315960040255 0
 85/home/anoth/Documents/repos/mmgd24_task1/node_modules/caniuse-lite/data/regions/AL.js1707675316020040914 0
-40/home/anoth/Documents/repos/mmgd24_task11707675325120141090 1
+40/home/anoth/Documents/repos/mmgd24_task11707678037120713337 1
 94/home/anoth/Documents/repos/mmgd24_task1/node_modules/csso/node_modules/mdn-data/css/readme.md1707675316084041619 0
 86/home/anoth/Documents/repos/mmgd24_task1/node_modules/@babel/helper-module-imports/lib1707675315960040255 1
 96/home/anoth/Documents/repos/mmgd24_task1/node_modules/regenerate-unicode-properties/package.json1707675316248043424 0
@@ -8429,7 +8429,7 @@
 107/home/anoth/Documents/repos/mmgd24_task1/node_modules/resolve/test/shadowed_core/node_modules/util/index.js1707675316136042191 0
 100/home/anoth/Documents/repos/mmgd24_task1/node_modules/caniuse-lite/data/features/array-find-index.js1707675316060041354 0
 88/home/anoth/Documents/repos/mmgd24_task1/node_modules/@sinonjs/commons/lib/class-name.js1707675315912039726 0
-57/home/anoth/Documents/repos/mmgd24_task1/src/right_fig.js1707676901103171422 0
+57/home/anoth/Documents/repos/mmgd24_task1/src/right_fig.js1707760118203544736 0
 64/home/anoth/Documents/repos/mmgd24_task1/node_modules/parcel/src1707675315932039946 1
 96/home/anoth/Documents/repos/mmgd24_task1/node_modules/caniuse-lite/data/features/css3-cursors.js1707675316216043072 0
 95/home/anoth/Documents/repos/mmgd24_task1/node_modules/@babel/runtime/helpers/wrapNativeSuper.js1707675316188042763 0
@@ -8586,7 +8586,7 @@
 100/home/anoth/Documents/repos/mmgd24_task1/node_modules/regenerate-unicode-properties/Script/Rejang.js1707675316224043159 0
 99/home/anoth/Documents/repos/mmgd24_task1/node_modules/core-js/es/typed-array/uint8-clamped-array.js1707675316468045844 0
 77/home/anoth/Documents/repos/mmgd24_task1/node_modules/is-generator-fn/license1707675315788038362 0
-44/home/anoth/Documents/repos/mmgd24_task1/src1707674121676197907 1
+44/home/anoth/Documents/repos/mmgd24_task1/src1707678037120713337 1
 94/home/anoth/Documents/repos/mmgd24_task1/node_modules/core-js/modules/es.string.starts-with.js1707675316296043952 0
 96/home/anoth/Documents/repos/mmgd24_task1/node_modules/jest-cli/node_modules/color-name/README.md1707675315808038582 0
 98/home/anoth/Documents/repos/mmgd24_task1/node_modules/@babel/runtime/helpers/esm/maybeArrayLike.js1707675316144042279 0
@@ -11154,7 +11154,7 @@
 91/home/anoth/Documents/repos/mmgd24_task1/node_modules/core-js/internals/typed-array-from.js1707675316468045844 0
 73/home/anoth/Documents/repos/mmgd24_task1/node_modules/expect/package.json1707675316000040695 0
 96/home/anoth/Documents/repos/mmgd24_task1/node_modules/core-js/actual/instance/group-by-to-map.js1707675316348044525 0
-51/home/anoth/Documents/repos/mmgd24_task1/.gitignore1707667936210137068 0
+51/home/anoth/Documents/repos/mmgd24_task1/.gitignore1707678037120713337 0
 70/home/anoth/Documents/repos/mmgd24_task1/node_modules/expect/README.md1707675316000040695 0
 76/home/anoth/Documents/repos/mmgd24_task1/node_modules/type-fest/package.json1707675315764038098 0
 107/home/anoth/Documents/repos/mmgd24_task1/node_modules/@parcel/rust/parcel-node-bindings.win32-x64-msvc.node1707675316608047385 0
@@ -13096,7 +13096,7 @@
 82/home/anoth/Documents/repos/mmgd24_task1/node_modules/core-js/full/array/values.js1707675316472045889 0
 97/home/anoth/Documents/repos/mmgd24_task1/node_modules/core-js/features/typed-array/copy-within.js1707675316248043424 0
 96/home/anoth/Documents/repos/mmgd24_task1/node_modules/core-js/features/typed-array/filter-out.js1707675316320044216 0
-67/home/anoth/Documents/repos/mmgd24_task1/dist/index.975ef6c8.js.map1707677906591171144 0
+67/home/anoth/Documents/repos/mmgd24_task1/dist/index.975ef6c8.js.map1707760283340124530 0
 94/home/anoth/Documents/repos/mmgd24_task1/node_modules/core-js/features/typed-array/group-by.js1707675316348044525 0
 73/home/anoth/Documents/repos/mmgd24_task1/node_modules/@swc/helpers/_/_jsx1707675316244043379 1
 92/home/anoth/Documents/repos/mmgd24_task1/node_modules/core-js/features/typed-array/to-hex.js1707675316448045624 0
@@ -13669,7 +13669,7 @@
 137/home/anoth/Documents/repos/mmgd24_task1/node_modules/@parcel/optimizer-htmlnano/node_modules/csso/lib/restructure/prepare/specificity.js1707675316104041839 0
 102/home/anoth/Documents/repos/mmgd24_task1/node_modules/electron-to-chromium/full-chromium-versions.json1707675315988040562 0
 93/home/anoth/Documents/repos/mmgd24_task1/node_modules/@babel/helpers/lib/helpers/applyDecs.js1707675316020040914 0
-53/home/anoth/Documents/repos/mmgd24_task1/src/index.js1707677971775941490 0
+53/home/anoth/Documents/repos/mmgd24_task1/src/index.js1707760283320124489 0
 94/home/anoth/Documents/repos/mmgd24_task1/node_modules/core-js/full/typed-array/reduce-right.js1707675316416045272 0
 111/home/anoth/Documents/repos/mmgd24_task1/node_modules/csso/node_modules/css-tree/lib/definition-syntax/parse.js1707675316224043159 0
 87/home/anoth/Documents/repos/mmgd24_task1/node_modules/core-js/full/typed-array/every.js1707675316320044216 0

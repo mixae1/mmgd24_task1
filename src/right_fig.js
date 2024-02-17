@@ -1,3 +1,5 @@
+const colors = ["black", "red", "blue", "green"]
+
 export default class RightFig {
 
     constructor(x, y, angle, n, vx, vy) {
@@ -8,6 +10,8 @@ export default class RightFig {
         this.vy = vy
         this.N = n
         this.r = 20
+        this.lives = 3
+        this.color = 'green'
         this.points = []
         for (let i = 0; i < this.N; i++)
             this.points.push({x: (Math.cos(i * (2 * Math.PI / this.N) + this.angle) * this.r), y: (Math.sin(i * (2 * Math.PI / this.N) + this.angle) * this.r)})           
@@ -32,7 +36,13 @@ export default class RightFig {
 
     intersects(fig) {
         for (let i = 0; i < fig.N; i++) {
-            if(this.contains(fig.point(i))) return true
+            if(this.contains(fig.point(i))) {
+                fig.lives -= 1
+                this.lives -= 1
+                fig.color = colors[Math.max(fig.lives, 0)]
+                this.color = colors[Math.max(this.lives, 0)]
+                return true
+            }
         }
         return false
     }

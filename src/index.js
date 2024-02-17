@@ -28,6 +28,7 @@ function draw(tFrame) {
             p = r.point(i)
             context.lineTo(p.x, p.y)
         }
+        context.fillStyle = r.color
         context.fill()        
     })
 
@@ -36,8 +37,8 @@ function draw(tFrame) {
 function update(tick) {
 
     for(let j = 0; j < gameState.figs.length; j++){
+        r = gameState.figs[j]
         for(let i = j + 1; i < gameState.figs.length; i++){
-            r = gameState.figs[j]
             r2 = gameState.figs[i]
             if(r.intersects(r2)){
                 v = {x: r.x - r2.x, y: r.y - r2.y}
@@ -58,6 +59,8 @@ function update(tick) {
 
         r.x += r.vx
         r.y += r.vy
+
+        if(r.lives <= 0) gameState.figs.splice(j, 1)
     }
 }
 
