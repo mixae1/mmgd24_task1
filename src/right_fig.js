@@ -3,6 +3,7 @@ const colors = ["black", "red", "blue", "green"]
 export default class RightFig {
 
     constructor(x, y, angle, n, vx, vy) {
+        this.type = "RightFig"
         this.x = x
         this.y = y
         this.angle = angle
@@ -35,16 +36,22 @@ export default class RightFig {
     }
 
     intersects(fig) {
-        for (let i = 0; i < fig.N; i++) {
-            if(this.contains(fig.point(i))) {
-                fig.lives -= 1
-                this.lives -= 1
-                fig.color = colors[Math.max(fig.lives, 0)]
-                this.color = colors[Math.max(this.lives, 0)]
-                return true
+        if(fig.type == "RightFig"){
+            for (let i = 0; i < fig.N; i++) {
+                if(this.contains(fig.point(i))) {
+                    fig.lives -= 1
+                    this.lives -= 1
+                    fig.color = colors[Math.max(fig.lives, 0)]
+                    this.color = colors[Math.max(this.lives, 0)]
+                    return true
+                }
             }
+            return false
         }
-        return false
+
+        if(fig.type == "Circle"){
+            return fig.intersects(this)
+        }
     }
 
 }

@@ -1,11 +1,9 @@
-import Rectangle from "./rectangle";
 import RightFig from "./right_fig";
+import Circle from "./circle";
 
 const canvas = document.getElementById("cnvs");
 
 const gameState = {figs: []};
-
-
 
 function queueUpdates(numTicks) {
     for (let i = 0; i < numTicks; i++) {
@@ -23,10 +21,15 @@ function draw(tFrame) {
     // draw
     gameState.figs.forEach(r=>{
         context.beginPath()
-        context.moveTo(r.point(0).x, r.point(0).y)
-        for (let i = 1; i < r.N; i++) {
-            p = r.point(i)
-            context.lineTo(p.x, p.y)
+        if(r.type == "RightFig"){
+            context.moveTo(r.point(0).x, r.point(0).y)
+            for (let i = 1; i < r.N; i++) {
+                p = r.point(i)
+                context.lineTo(p.x, p.y)
+            }
+        }
+        if(r.type == "Circle"){
+            context.arc(r.x, r.y, r.r, 0, Math.PI * 2)
         }
         context.fillStyle = r.color
         context.fill()        
@@ -119,7 +122,7 @@ function setup() {
         n = Math.abs(vx) + Math.abs(vy)
         vx /= n
         vy /= n
-        r = new RightFig(x, y, Math.random() * Math.PI, 15, vx, vy)
+        r = new Circle(x, y, vx, vy)
         gameState.figs.push(r)
     }
 }
