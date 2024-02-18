@@ -11,7 +11,9 @@ function queueUpdates(numTicks) {
         update(gameState.lastTick)
     }
 }
-
+let time = 0
+let frames = 0
+let fps = 0
 function draw(tFrame) {
     const context = canvas.getContext('2d');
 
@@ -35,6 +37,19 @@ function draw(tFrame) {
         context.fill()        
     })
 
+    if(!tFrame) return
+
+    const dt = tFrame - gameState.lastTick
+    frames++
+    time += dt
+    if(time >= 1000){
+        time -= 1000
+        fps = frames
+        frames = 0
+    }
+
+    context.font = "20px serif";
+    context.fillText(fps, 10, 20)
 }
 
 function update(tick) {
@@ -93,36 +108,36 @@ function setup() {
     gameState.lastRender = gameState.lastTick
     gameState.tickLength = 15 //ms
 
-    for(i = 0; i < 10; i++){
+    for(i = 0; i < 30; i++){
         [x, y] = [Math.random() * (canvas.width - 10), Math.random() * (canvas.height - 10)]
         vx = Math.random() * 2 - 1
         vy = Math.random() * 2 - 1
         n = Math.abs(vx) + Math.abs(vy)
         vx /= n
         vy /= n
-        r = new RightFig(x, y, Math.random() * Math.PI, 3, vx, vy)
+        r = new RightFig(x, y, vx, vy, 3, Math.random() * 25 + 5, Math.random() * Math.PI)
         gameState.figs.push(r)
     }
 
-    for(i = 0; i < 10; i++){
+    for(i = 0; i < 30; i++){
         [x, y] = [Math.random() * (canvas.width - 10), Math.random() * (canvas.height - 10)]
         vx = Math.random() * 2 - 1
         vy = Math.random() * 2 - 1
         n = Math.abs(vx) + Math.abs(vy)
         vx /= n
         vy /= n
-        r = new RightFig(x, y, Math.random() * Math.PI, 6, vx, vy)
+        r = new RightFig(x, y, vx, vy, 6, Math.random() * 25 + 5, Math.random() * Math.PI)
         gameState.figs.push(r)
     }
 
-    for(i = 0; i < 10; i++){
+    for(i = 0; i < 30; i++){
         [x, y] = [Math.random() * (canvas.width - 10), Math.random() * (canvas.height - 10)]
         vx = Math.random() * 2 - 1
         vy = Math.random() * 2 - 1
         n = Math.abs(vx) + Math.abs(vy)
         vx /= n
         vy /= n
-        r = new Circle(x, y, vx, vy)
+        r = new Circle(x, y, vx, vy, Math.random() * 25 + 5)
         gameState.figs.push(r)
     }
 }
