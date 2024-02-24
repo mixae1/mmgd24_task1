@@ -1,8 +1,11 @@
 import RightFig from "./right_fig";
 import Circle from "./circle";
+import Common from "./common";
+import vec2 from "./vec2";
+import QuadTree from "./quad-tree";
+import Rectangle from "./rectangle";
 
 const canvas = document.getElementById("cnvs");
-
 const gameState = {figs: []};
 
 function queueUpdates(numTicks) {
@@ -16,7 +19,7 @@ let frames = 0
 let fps = 0
 function draw(tFrame) {
     const context = canvas.getContext('2d');
-
+    context.font = "20px serif";
     // clear canvas
     context.clearRect(0, 0, canvas.width, canvas.height)
 
@@ -34,7 +37,7 @@ function draw(tFrame) {
             context.arc(r.x, r.y, r.r, 0, Math.PI * 2)
         }
         context.fillStyle = r.color
-        context.fill()        
+        context.fill()      
     })
 
     if(!tFrame) return
@@ -48,38 +51,36 @@ function draw(tFrame) {
         frames = 0
     }
 
-    context.font = "20px serif";
+    context.fillStyle = "black"
     context.fillText(fps, 10, 20)
 }
 
 function update(tick) {
 
-    for(let j = 0; j < gameState.figs.length; j++){
-        r = gameState.figs[j]
-        for(let i = j + 1; i < gameState.figs.length; i++){
-            r2 = gameState.figs[i]
-            if(r.intersects(r2)){
-                v = {x: r.x - r2.x, y: r.y - r2.y}
-                n = Math.abs(v.x) + Math.abs(v.y)
-                if(n){
-                    v.x /= n
-                    v.y /= n
-                }
-                r.vx = v.x
-                r.vy = v.y
-                r2.vx = -v.x
-                r2.vy = -v.y
-            }
-        }
+    gameState.QTRoot.processCollisions()
 
-        if(r.x < 0 || r.x > canvas.width) r.vx = -r.vx;
-        if(r.y < 0 || r.y > canvas.height) r.vy = -r.vy;
+    // for(let j = 0; j < gameState.figs.length; j++){
+    //     r = gameState.figs[j]
+    //     for(let i = j + 1; i < gameState.figs.length; i++){
+    //         r2 = gameState.figs[i]
+    //         if(r.intersects(r2)){
+    //             v = new vec2(r.x - r2.x, r.y - r2.y).norm()
+    //             r.vx = v.x
+    //             r.vy = v.y
+    //             r2.vx = -v.x
+    //             r2.vy = -v.y
+    //         }
+    //     }
 
-        r.x += r.vx
-        r.y += r.vy
+    //     if(r.x < 0 || r.x > canvas.width) r.vx = -r.vx;
+    //     if(r.y < 0 || r.y > canvas.height) r.vy = -r.vy;
 
-        if(r.lives <= 0) gameState.figs.splice(j, 1)
-    }
+    //     r.x += r.vx
+    //     r.y += r.vy
+
+    //     if(r.lives <= 0) gameState.figs.splice(j, 1)
+    // }
+
 }
 
 function run(tFrame) {
@@ -108,37 +109,28 @@ function setup() {
     gameState.lastRender = gameState.lastTick
     gameState.tickLength = 15 //ms
 
-    for(i = 0; i < 30; i++){
+    gameState.QTRoot = new QuadTree(new Rectangle(0, 0, canvas.width, canvas.height))
+
+    for(i = 0; i < 300; i++){
         [x, y] = [Math.random() * (canvas.width - 10), Math.random() * (canvas.height - 10)]
-        vx = Math.random() * 2 - 1
-        vy = Math.random() * 2 - 1
-        n = Math.abs(vx) + Math.abs(vy)
-        vx /= n
-        vy /= n
-        r = new RightFig(x, y, vx, vy, 3, Math.random() * 25 + 5, Math.random() * Math.PI)
-        gameState.figs.push(r)
+        v = new vec2(Math.random() * 2 - 1, Math.random() * 2 - 1).norm()
+        r = new RightFig(x, y, v.x, v.y, 3, Math.random() * 15 + 5, Math.random() * Math.PI)
+        //gameState.figs.push(r)
+        gameState.QTRoot.insert(r)
     }
 
-    for(i = 0; i < 30; i++){
+    for(i = 0; i < 300; i++){
         [x, y] = [Math.random() * (canvas.width - 10), Math.random() * (canvas.height - 10)]
-        vx = Math.random() * 2 - 1
-        vy = Math.random() * 2 - 1
-        n = Math.abs(vx) + Math.abs(vy)
-        vx /= n
-        vy /= n
-        r = new RightFig(x, y, vx, vy, 6, Math.random() * 25 + 5, Math.random() * Math.PI)
-        gameState.figs.push(r)
+        v = new vec2(Math.random() * 2 - 1, Math.random() * 2 - 1).norm()
+        r = new RightFig(x, y, v.x, v.y, 6, Math.random() * 15 + 5, Math.random() * Math.PI)
+        gameState.QTRoot.insert(r)
     }
 
-    for(i = 0; i < 30; i++){
+    for(i = 0; i < 300; i++){
         [x, y] = [Math.random() * (canvas.width - 10), Math.random() * (canvas.height - 10)]
-        vx = Math.random() * 2 - 1
-        vy = Math.random() * 2 - 1
-        n = Math.abs(vx) + Math.abs(vy)
-        vx /= n
-        vy /= n
-        r = new Circle(x, y, vx, vy, Math.random() * 25 + 5)
-        gameState.figs.push(r)
+        v = new vec2(Math.random() * 2 - 1, Math.random() * 2 - 1).norm()
+        r = new Circle(x, y, v.x, v.y, Math.random() * 15 + 5)
+        gameState.QTRoot.insert(r)
     }
 }
 

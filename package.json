@@ -2,13 +2,13 @@
   "name": "ping-pong-test",
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
+  "main": "index.js",
   "scripts": {
     "coverage": "jest --coverage",
     "start": "parcel index.html",
     "test": "jest --verbose",
     "watch": "jest --watch",
-    "predeploy": "rm -rf dist && parcel build index.html --public-url github.com/mixae1/mmgd24_task1/tree/part1",
+    "predeploy": "rm -rf dist && parcel build index.html --public-url github.com/mixae1/mmgd24_task1",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
