@@ -7,7 +7,7 @@ export default class Rectangle {
         this.w = w
         this.h = h 
     }
-
+    
     get left() {
         return this.x
     }
@@ -25,11 +25,11 @@ export default class Rectangle {
     }
 
     get topLeft(){
-        return vec2(this.x, this.y)
+        return new vec2(this.x, this.y)
     }
 
     get size(){
-        return vec2(w, h)
+        return new vec2(this.w, this.h)
     }
 
     contains(point) {
@@ -39,31 +39,14 @@ export default class Rectangle {
             point.y < this.y + this.h)
     }
 
-    contains_(rect) {
-        return this.contains(rect.topLeft) || this.intersects(rect)
+    intersects_(rect) {
+        return (((this.x < rect.right) && (rect.left < this.x + this.w)) || (this.x >= rect.right) && (rect.left >= this.x + this.w))
+            && ((this.y < rect.bottom) && (rect.top < this.y + this.w)) || ((this.y >= rect.bottom) && (rect.top >= this.y + this.w))
     }
-
-    intersects(rect) {
-        return (this.x < rect.x + rect.w)
-            && (rect.x < this.x + this.w)
-            && (this.y < rect.y + rect.h)
-            && (rect.y < this.y + this.w)
-    }
-
-    computeBox(i){
-        switch (i) {
-            case 0:
-                return new Rectangle(this.x, this.y, this.w / 2, this.h / 2)
-            case 1:
-                return new Rectangle(this.x + this.w / 2, this.y, this.w / 2, this.h / 2)
-            case 2:
-                return new Rectangle(this.x, this.y + this.h / 2, this.w / 2, this.h / 2)
-            case 3:
-                return new Rectangle(this.x + this.w / 2, this.y + this.h / 2, this.w / 2, this.h / 2)
-            default:
-                return undefined
-                break;
-        }
+    
+    contains_(rect){
+        return this.x < rect.left && this.right > rect.right && 
+        this.y < rect.top && this.bottom > rect.bottom
     }
 
     computeQuads(){

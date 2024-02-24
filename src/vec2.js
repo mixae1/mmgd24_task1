@@ -11,7 +11,7 @@ export default class vec2{
     }
 
     static add(v1, v2){
-        return vec2(this.x + v.x, this.y + v.y)
+        return new vec2(v1.x + v2.x, v1.y + v2.y)
     }
 
     devide(t){
@@ -27,7 +27,7 @@ export default class vec2{
     }
 
     static minus(v1, v2){
-        return vec2(this.x - v.x, this.y - v.y)
+        return new vec2(v1.x - v2.x, v1.y - v2.y)
     }
 
     norm(){

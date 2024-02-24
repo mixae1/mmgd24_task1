@@ -1,4 +1,5 @@
 import Common from "./common"
+import vec2 from "./vec2"
 
 export default class Circle extends Common {
 
@@ -28,9 +29,9 @@ export default class Circle extends Common {
             //step 2
             // const add_verts = []
             // for (let i = 0; i < fig.N; i++) {
-            //     const a = fig.point((i + 1) % fig.N)
-            //     const b = fig.point(i)
-            //     const n = Common.normilize({x: b.y - a.y , y: a.x - b.x })
+            //     const a = vec2.minus(fig.point(i), fig.center)
+            //     const b = vec2.minus(fig.point((i + 1) % fig.N), fig.center)
+            //     const n = vec2.add(a, b).norm()
             //     add_verts.push({x: this.x - this.r * n.x, y: this.y - this.r * n.y })
             // }
 

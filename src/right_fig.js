@@ -19,10 +19,10 @@ export default class RightFig extends Common{
 
     contains(v) {
         for (let i = 0; i < this.N; i++){
-            const a = this.point((i + 1) % this.N)
-            const b = this.point(i)
-            const n = {x: b.y - a.y , y: a.x - b.x }
-            const v_a = {x: v.x - a.x, y: v.y - a.y}
+            const a = vec2.minus(this.point(i), this.center)
+            const b = vec2.minus(this.point((i + 1) % this.N), this.center)
+            const n = vec2.add(a, b).norm()
+            const v_a = new vec2(v.x, v.y).minus(a)
             const dot = v_a.x * n.x + v_a.y * n.y
             if(dot > 0) return false
         }
@@ -30,21 +30,22 @@ export default class RightFig extends Common{
     }
 
     intersects(fig) {
-        if(!this.possible_intersects(fig)) return false
-
+        //if(!this.possible_intersects(fig)) return false
+        if(!this.possible_intersects2(fig)) return false
+        
         // smart line intersections through dot products of verticies
         if(fig.type == "RightFig"){
 
             for (let i = 0; i < this.N; i++){
                 const a = this.point(i)
                 const b = this.point((i + 1) % this.N)
-                const n = {x: b.y - a.y , y: a.x - b.x }
+                const n = vec2.add(vec2.minus(a, this.center), vec2.minus(b, this.center)).norm()
 
                 let flag = -1
                 let only_pos_dot_fl = true
                 let t, t0
                 for(let j = 0; j < fig.N; j++){
-                    const v = fig.point(j).minus(a)
+                    const v = vec2.minus(fig.point(j), a)
                     const dot = v.x * n.x + v.y * n.y
                     t = dot > 0 ? 1 : 0
                     if(j == 0){
@@ -59,7 +60,7 @@ export default class RightFig extends Common{
                         // check b[j-1, j] and a[i], a[i + 1 % N]
                         const ja = fig.point(j - 1)
                         const jb = fig.point(j)
-                        const jn = {x: jb.y - ja.y , y: ja.x - jb.x }
+                        const jn = vec2.add(vec2.minus(ja, fig.center), vec2.minus(jb, fig.center)).norm()
                         const jdota = (a.x - ja.x) * jn.x + (a.y - ja.y) * jn.y
                         const jdotb = (b.x - ja.x) * jn.x + (b.y - ja.y) * jn.y
                         if((jdota > 0) != (jdotb > 0)){
@@ -72,7 +73,7 @@ export default class RightFig extends Common{
                     // check b[j-1, j] and a[i], a[i + 1 % N]
                     const ja = fig.point(fig.N - 1)
                     const jb = fig.point(0)
-                    const jn = {x: jb.y - ja.y , y: ja.x - jb.x }
+                    const jn = vec2.add(vec2.minus(ja, fig.center), vec2.minus(jb, fig.center)).norm()
                     const jdota = (a.x - ja.x) * jn.x + (a.y - ja.y) * jn.y
                     const jdotb = (b.x - ja.x) * jn.x + (b.y - ja.y) * jn.y
                     if((jdota > 0) != (jdotb > 0)){
@@ -83,10 +84,13 @@ export default class RightFig extends Common{
                 if(only_pos_dot_fl) return false
             }
             
+            if(this.inner_intersects(fig)){
+                return this.decrement_live(fig)
+            }
         }
 
-        if(fig.type == "Circle" && this.possible_intersects(fig)){
-            return this.decrement_live(fig)
+        if(fig.type == "Circle"){
+            return fig.intersects(this)
         }
         return false
     }

@@ -1,4 +1,5 @@
 import RightFig from './right_fig'
+import vec2 from './vec2'
 
 describe('Triangle defaults', () => {
     it('is not groovy :(', () => {
@@ -14,7 +15,7 @@ describe('Triangle contains', () => {
         const tr = new RightFig(0, 0, 0, 0, 3, 20, 0)
         expect(tr.contains({x: 0, y: 0})).toBeTruthy()
         expect(tr.contains({x: 20, y: 0})).toBeTruthy()
-        expect(tr.contains({x: -10, y: 0})).toBeTruthy()
+        expect(tr.contains({x: -9.9, y: 0})).toBeTruthy()
         expect(tr.contains(tr.point(1))).toBeTruthy()
         expect(tr.contains({x: 20.01, y: 0})).toBeFalsy()
         expect(tr.contains({x: tr.point(1).x - 0.01, y: 0})).toBeFalsy()

@@ -88,7 +88,8 @@ describe('Rectangle.intersects()', () => {
 
     it('should return true if rects are intersecting', () => {
         const otherRect = new Rectangle(1, 1, 3, 2)
-        expect(rect.intersects(otherRect)).toBeTruthy()
+        expect(rect.intersects_(otherRect)).toBeTruthy()
+        expect(otherRect.intersects_(rect)).toBeTruthy()
 
         //    0    1    2    3    4
         // 0  ┼──────────────○──────
@@ -102,7 +103,8 @@ describe('Rectangle.intersects()', () => {
 
     it('should return true if one rect contains other', () => {
         const otherRect = new Rectangle(1, 0, 1, 2)
-        expect(rect.intersects(otherRect)).toBeTruthy()
+        expect(rect.intersects_(otherRect)).toBeTruthy()
+        expect(otherRect.intersects_(rect)).toBeTruthy()
 
         //    0    1    2    3    4
         // 0  ┼────○────○────○──────
@@ -115,6 +117,7 @@ describe('Rectangle.intersects()', () => {
 
     it('should return false if rects are not intersecting', () => {
         const otherRect = new Rectangle(10, 10, 1, 1)
-        expect(rect.intersects(otherRect)).toBeFalsy()
+        expect(rect.intersects_(otherRect)).toBeFalsy()
+        expect(otherRect.intersects_(rect)).toBeFalsy()
     })
 })

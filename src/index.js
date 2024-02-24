@@ -24,21 +24,23 @@ function draw(tFrame) {
     context.clearRect(0, 0, canvas.width, canvas.height)
 
     // draw
-    gameState.figs.forEach(r=>{
-        context.beginPath()
-        if(r.type == "RightFig"){
-            context.moveTo(r.point(0).x, r.point(0).y)
-            for (let i = 1; i < r.N; i++) {
-                p = r.point(i)
-                context.lineTo(p.x, p.y)
-            }
-        }
-        if(r.type == "Circle"){
-            context.arc(r.x, r.y, r.r, 0, Math.PI * 2)
-        }
-        context.fillStyle = r.color
-        context.fill()      
-    })
+    // gameState.figs.forEach(r=>{
+    //     context.beginPath()
+    //     if(r.type == "RightFig"){
+    //         context.moveTo(r.point(0).x, r.point(0).y)
+    //         for (let i = 1; i < r.N; i++) {
+    //             const p = r.point(i)
+    //             context.lineTo(p.x, p.y)
+    //         }
+    //     }
+    //     if(r.type == "Circle"){
+    //         context.arc(r.x, r.y, r.r, 0, Math.PI * 2)
+    //     }
+    //     context.fillStyle = r.color
+    //     context.fill()      
+    // })
+
+    gameState.QTRoot.draw(context)
 
     if(!tFrame) return
 
@@ -60,11 +62,11 @@ function update(tick) {
     gameState.QTRoot.processCollisions()
 
     // for(let j = 0; j < gameState.figs.length; j++){
-    //     r = gameState.figs[j]
+    //     const r = gameState.figs[j]
     //     for(let i = j + 1; i < gameState.figs.length; i++){
-    //         r2 = gameState.figs[i]
+    //         const r2 = gameState.figs[i]
     //         if(r.intersects(r2)){
-    //             v = new vec2(r.x - r2.x, r.y - r2.y).norm()
+    //             const v = new vec2(r.x - r2.x, r.y - r2.y).norm()
     //             r.vx = v.x
     //             r.vy = v.y
     //             r2.vx = -v.x
@@ -80,7 +82,6 @@ function update(tick) {
 
     //     if(r.lives <= 0) gameState.figs.splice(j, 1)
     // }
-
 }
 
 function run(tFrame) {
@@ -111,25 +112,30 @@ function setup() {
 
     gameState.QTRoot = new QuadTree(new Rectangle(0, 0, canvas.width, canvas.height))
 
-    for(i = 0; i < 300; i++){
-        [x, y] = [Math.random() * (canvas.width - 10), Math.random() * (canvas.height - 10)]
-        v = new vec2(Math.random() * 2 - 1, Math.random() * 2 - 1).norm()
-        r = new RightFig(x, y, v.x, v.y, 3, Math.random() * 15 + 5, Math.random() * Math.PI)
-        //gameState.figs.push(r)
+    for(let i = 0; i < 1000; i++){
+        const v = new vec2(Math.random() * 2 - 1, Math.random() * 2 - 1).norm()
+        const rad = Math.random() * 2 + 5
+        let [x, y] = [Math.random() * (canvas.width - 2 * rad) + rad, Math.random() * (canvas.height - 2 * rad) + rad]
+        const r = new RightFig(x, y, v.x, v.y, 3, rad, Math.random() * Math.PI)
+        // gameState.figs.push(r)
         gameState.QTRoot.insert(r)
     }
 
-    for(i = 0; i < 300; i++){
-        [x, y] = [Math.random() * (canvas.width - 10), Math.random() * (canvas.height - 10)]
-        v = new vec2(Math.random() * 2 - 1, Math.random() * 2 - 1).norm()
-        r = new RightFig(x, y, v.x, v.y, 6, Math.random() * 15 + 5, Math.random() * Math.PI)
+    for(let i = 0; i < 1000; i++){
+        const v = new vec2(Math.random() * 2 - 1, Math.random() * 2 - 1).norm()
+        const rad = Math.random() * 2 + 5
+        let [x, y] = [Math.random() * (canvas.width - 2 * rad) + rad, Math.random() * (canvas.height - 2 * rad) + rad]
+        const r = new RightFig(x, y, v.x, v.y, 6, rad, Math.random() * Math.PI)
+        // gameState.figs.push(r)
         gameState.QTRoot.insert(r)
     }
 
-    for(i = 0; i < 300; i++){
-        [x, y] = [Math.random() * (canvas.width - 10), Math.random() * (canvas.height - 10)]
-        v = new vec2(Math.random() * 2 - 1, Math.random() * 2 - 1).norm()
-        r = new Circle(x, y, v.x, v.y, Math.random() * 15 + 5)
+    for(let i = 0; i < 1000; i++){
+        const v = new vec2(Math.random() * 2 - 1, Math.random() * 2 - 1).norm()
+        const rad = Math.random() * 2 + 5
+        let [x, y] = [Math.random() * (canvas.width - 2 * rad) + rad, Math.random() * (canvas.height - 2 * rad) + rad]
+        const r = new Circle(x, y, v.x, v.y, rad)
+        // gameState.figs.push(r)
         gameState.QTRoot.insert(r)
     }
 }

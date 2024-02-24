@@ -9,7 +9,7 @@ export default class Common{
         this.N = n
         this.r = r
         this.inner_r = Math.cos(Math.PI / this.N) * this.r
-        this.lives = 3000000
+        this.lives = 3
         this.color = 'green'
     }
 
@@ -30,6 +30,11 @@ export default class Common{
         this.lives -= 1
         fig.color = Common.colors[Math.max(fig.lives, 0)]
         this.color = Common.colors[Math.max(this.lives, 0)]
+        return true
+    }
+
+    possible_intersects2(fig){
+        if(Math.abs(fig.x - this.x) > this.r + fig.r || Math.abs(fig.y - this.y) > this.r + fig.r) return false
         return true
     }
 
@@ -61,6 +66,14 @@ export default class Common{
         return new vec2(this.right - this.left, this.bottom - this.top)
     }
 
+    get w(){
+        return 2 * this.r
+    }
+
+    get h(){
+        return 2 * this.r
+    }
+
     r_contains(point) {
         return (point.x >= this.x &&
             point.x < this.x + this.w &&
@@ -69,14 +82,13 @@ export default class Common{
     }
 
     r_intersects_(rect) {
-        return (this.x < rect.x + rect.w)
-            && (rect.x < this.x + this.w)
-            && (this.y < rect.y + rect.h)
-            && (rect.y < this.y + this.w)
+        return (((this.x < rect.right) && (rect.left < this.x + this.w)) || (this.x >= rect.right) && (rect.left >= this.x + this.w))
+            && ((this.y < rect.bottom) && (rect.top < this.y + this.w)) || ((this.y >= rect.bottom) && (rect.top >= this.y + this.w))
     }
-
-    r_contains_(rect) {
-        return this.r_contains(rect.center) && !this.intersects(rect)
+    
+    r_contains_(rect){
+        return this.x < rect.left && this.right > rect.right && 
+        this.y < rect.top && this.bottom > rect.bottom
     }
 
     computeQuads(){
