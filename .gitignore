@@ -1,7 +1,0 @@
-node_modules/
-gh-pages
-dist/
-.cache/
-coverage/
-.idea
-/.parcel-cache/
